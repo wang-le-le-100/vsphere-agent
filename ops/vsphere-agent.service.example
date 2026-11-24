@@ -1,0 +1,20 @@
+# 仅为结构示例。部署前由用户核对路径、账户、文件权限及超时时间。
+[Unit]
+Description=vSphere Events Tasks Alarms Collector
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=vsphere
+Group=vsphere
+WorkingDirectory=/opt/vsphere-agent
+ExecStart=/opt/vsphere-agent/.venv/bin/python -m vsphere_agent --config /etc/vsphere-agent/config.yaml
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=150
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

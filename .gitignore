@@ -1,0 +1,31 @@
+# 本地环境、缓存与运行状态
+.venv/
+.uv-python/
+.cache/
+.qoder/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+*.whl
+*.sqlite*
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.log
+*.key
+*.pem
+*.p12
+*.pfx
+config.yaml
+config.*.yaml
+config.*.yml
+!config.example.yaml
+*.tar.gz
+*.env
+.env*
+# 现有文件包含凭据，不应提交。
+demo1.py
+vcenter-vsphere-events-tasks-alarms-solution.md

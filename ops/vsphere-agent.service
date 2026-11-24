@@ -1,0 +1,21 @@
+[Unit]
+Description=vSphere Events Tasks Alarms Collector
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=vsphere
+Group=vsphere
+WorkingDirectory=/opt/vsphere-agent
+Environment=PYTHONPATH=/opt/vsphere-agent/src:/opt/vsphere-agent/vendor
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3.10 -S -m vsphere_agent --config /etc/vsphere-agent/config.yaml
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=150
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
